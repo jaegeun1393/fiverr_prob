@@ -1,6 +1,8 @@
 import React, { Component, createElement } from "react";
 import jsPDF from "jspdf";
 import Calendar from 'react-calendar';
+import html2canvas from 'html2canvas';
+
 
 class App extends Component {
   constructor(props) {
@@ -84,23 +86,31 @@ class App extends Component {
       subop: subop
     }];
 
-    var self = this;
     const input = document.getElementById("invoice-box");
-    console.log(input);
-    let handleElement = {
-      '#editor': function (element, renderer) {
-        return true;
-      }
-    };
+    var pdf = new jsPDF('portriat', 'pt', [1000, 770]);
 
-    let doc = new jsPDF();
-    doc.html(input.innerHTML, {
-      'x': 15,
-      'y': 15,
-      'width': 200,
-      'elementHandlers': handleElement
-    });
-    doc.save("sample-pdf.pdf");
+    pdf.html(input,
+      {
+        'width': 200,
+        'height': 180,
+        callback: function (pdf) {
+          pdf.save('DOC.pdf');
+        }
+      })
+
+    /*
+    var pdf = new jsPDF('portriat', 'pt', 'a4');
+
+    pdf.html(input,
+      {
+        'x': 15,
+        'y': 15,
+        'width': 180,
+        callback: function (pdf) {
+          pdf.save('DOC.pdf');
+        }
+      })
+    */
 
     /*
     const input = document.getElementById("invoice-box");
@@ -132,7 +142,7 @@ class App extends Component {
 
 
 
-  
+
   remove_row = (num) => {
     document.getElementById("table_item").deleteRow(num);
     var num_row = document.getElementsByClassName("item").length;
