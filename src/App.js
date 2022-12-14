@@ -27,7 +27,7 @@ class App extends Component {
       c_title: "",
       c_price: "",
       c_des: "",
-      class_info: "Suite 116 15160 Northwest Laidiaw Road Portiand, Oregon 97229 United States Angiek@mmtprep.com Phone: 971-256-2586",
+      class_info: "Suite 116 15160 Northwest Laidiaw Road\nPortiand, Oregon 97229 United States\nAngiek@mmtprep.com Phone: 971-256-2586",
       note: ""
     };
     this.autocal_total = this.autocal_total.bind(this);
@@ -91,8 +91,6 @@ class App extends Component {
 
     pdf.html(input,
       {
-        'width': 200,
-        'height': 180,
         callback: function (pdf) {
           pdf.save('DOC.pdf');
         }
@@ -515,12 +513,17 @@ class App extends Component {
                 </form>
               </div>
 
-              <div className="md:w-full lg:w-8/12 bg-white p-6 sm:p-8" id="invoice-box">
+              <div className="w-[770px] bg-white p-6" id="invoice-box">
                 <div className="">
                   <div className="mb-7 border-b border-gray-300">
-                    <div className="flex justify-between items-center p-1.5 ">
+                    <div className="flex justify-between items-center p-1.5 aligen-left">
+                      <div className="mr-3">
+                        <img width="100" height="33" alt="logo" />
+                      </div>
                       <div className="text-right text-base">
-                        <p className="font-bold text-xl mb-4">Invoice#{this.state.invocie_num}</p>
+                        <div className="grid grid-rows-1 grid-flow-col">
+                          <p className="font-bold text-xl mb-4 row-span-3">Invoice #</p><p className="font-bold text-xl row-span-2 col-span-2">{this.state.invocie_num}</p>
+                        </div>
                         <p className="text-gray-600 text-sm">
                           <span>Issue Date: </span>
                           <button onClick={() => this.showpanel("idp")}>{this.state.issue_d}</button>
