@@ -91,6 +91,7 @@ class App extends Component {
 
     pdf.html(input,
       {
+        "y": -20,
         callback: function (pdf) {
           pdf.save('DOC.pdf');
         }
@@ -172,22 +173,24 @@ class App extends Component {
     var td1input = document.createElement("input");
     td1input.id = num_row + "_title";
     td1input.value = this.state.c_title;
-    td1.className = "pl-4 py-2 inputStyle flex flex-col";
+    td1input.className = "h-[30px]";
+    td1.className = "pl-4 inputStyle flex flex-col";
     td1.appendChild(td1input);
 
     var td12input = document.createElement("input");
     td12input.id = num_row + "_describe";
-    td12input.className = "text-xs";
+    td12input.className = "text-xs h-[30px]";
     td12input.value = this.state.c_des;
     td1.appendChild(td12input);
 
     var td2 = document.createElement("td");
     td2.innerText = "$";
     var td2input = document.createElement("input");
+    td2input.className = "h-[30px]";
     td2input.type = "number";
     td2input.id = num_row + "_price";
     td2input.value = this.state.c_price;
-    td2.className = "pl-4 py-2 inputStyle text-right";
+    td2.className = "pl-4 inputStyle text-right";
     td2input.addEventListener("change", (event) => {
       this.autocal_sub_total(event.target.id);
     });
@@ -198,7 +201,8 @@ class App extends Component {
     td3input.type = "number";
     td3input.id = num_row + "_quantity";
     td3input.value = 0;
-    td3.className = "pl-4 py-2 inputStyle text-right";
+    td3input.className = "h-[30px]";
+    td3.className = "pl-4 text-right";
     td3input.addEventListener("change", (event) => {
       this.autocal_sub_total(event.target.id);
     });
@@ -297,20 +301,25 @@ class App extends Component {
     var td1 = document.createElement("td");
     var td1input = document.createElement("input");
     td1input.id = num_row + "_title";
-    td1.className = "pl-4 py-2 inputStyle flex flex-col";
+    td1input.value = this.state.c_title;
+    td1input.className = "h-[30px]";
+    td1.className = "pl-4 inputStyle flex flex-col";
     td1.appendChild(td1input);
 
     var td12input = document.createElement("input");
     td12input.id = num_row + "_describe";
-    td12input.className = "text-xs";
+    td12input.className = "text-xs h-[30px]";
+    td12input.value = this.state.c_des;
     td1.appendChild(td12input);
 
     var td2 = document.createElement("td");
     td2.innerText = "$";
     var td2input = document.createElement("input");
+    td2input.className = "h-[30px]";
     td2input.type = "number";
     td2input.id = num_row + "_price";
-    td2.className = "pl-4 py-2 inputStyle text-right";
+    td2input.value = this.state.c_price;
+    td2.className = "pl-4 inputStyle text-right";
     td2input.addEventListener("change", (event) => {
       this.autocal_sub_total(event.target.id);
     });
@@ -320,7 +329,9 @@ class App extends Component {
     var td3input = document.createElement("input");
     td3input.type = "number";
     td3input.id = num_row + "_quantity";
-    td3.className = "pl-4 py-2 inputStyle text-right";
+    td3input.value = 0;
+    td3input.className = "h-[30px]";
+    td3.className = "pl-4 text-right";
     td3input.addEventListener("change", (event) => {
       this.autocal_sub_total(event.target.id);
     });
@@ -334,7 +345,7 @@ class App extends Component {
       this.remove_row(num);
     });
     td4.appendChild(td4btn);
-
+    
     main.appendChild(mtr);
     mtr.appendChild(td1);
     mtr.appendChild(td2);
@@ -515,14 +526,14 @@ class App extends Component {
 
               <div className="w-[770px] bg-white p-6" id="invoice-box">
                 <div className="">
-                  <div className="mb-7 border-b border-gray-300">
+                  <div className="mb-2 border-b border-gray-300">
                     <div className="flex justify-between items-center p-1.5 aligen-left">
                       <div className="mr-3">
                         <img width="100" height="33" alt="logo" />
                       </div>
                       <div className="text-right text-base">
-                        <div className="grid grid-rows-1 grid-flow-col">
-                          <p className="font-bold text-xl mb-4 row-span-3">Invoice #</p><p className="font-bold text-xl row-span-2 col-span-2">{this.state.invocie_num}</p>
+                        <div className="grid grid-rows-1 grid-cols-2">
+                          <p className="font-bold text-xl mb-4">Invoice #</p><p className="font-bold text-xl">{this.state.invocie_num}</p>
                         </div>
                         <p className="text-gray-600 text-sm">
                           <span>Issue Date: </span>
@@ -553,23 +564,31 @@ class App extends Component {
                       </div>
                     </div>
 
-                    <div className="flex justify-between items-start p-1.5">
-                      <div className="">
+                    <div className="flex items-start p-1.5">
+                      <div className="flex-1">
                         <h4 className="text-gray-800 font-bold mb-[4px]">MMT Prep, LLC</h4>
                         <textarea className="text-xs text-gray-600 w-[250px] min-h-[70px]" value={this.state.class_info} name="class_info" onChange={this.changetext} />
                       </div>
                     </div>
                   </div>
-                  <div className="md:w-7/12 w-full flex justify-between text-xs mb-7 p-1.5 text-gray-600">
-                    <div className="">
-                      <p className="mb-[4px]">Bill To:</p>
-                      <input value={this.state.c_name} name="c_name" onChange={this.changetext} className="font-bold text-gray-800 min-h-[5px]" />
-                      <p>United States</p>
+                  <div className="grid grid-rows-1 grid-cols-2 w-full mb-2 p-1.5 text-gray-600">
+
+                    <div className="h-[30px]">
+                      <div className="flex">
+                        <p className="flex-none text-sm">Bill To :</p>
+                        <input className="flex-1 ml-[10px] text-l" value={this.state.c_name} name="c_name" onChange={this.changetext} />
+                      </div>
+                      <p className="text-sm">United States</p>
                     </div>
-                    <div className=" text-right md:text-left">
-                      <p>Additional Customer Info:</p>
-                      <p>Address: <input value={this.state.c_email} name="c_email" onChange={this.changetext} /></p>
-                      <p>Phone: <input value={this.state.c_num} name="c_num" onChange={this.changetext} /></p>
+
+                    <div className="text-right md:text-left">
+                      <p className="h-[23px] z-13 text-sm">Additional Customer Info:</p>
+                      <div>
+                        <p className="text-sm">Address : <input className="h-[30px]" value={this.state.c_email} name="c_email" onChange={this.changetext} /></p>
+                      </div>
+                      <div className="text-sm">
+                        <p>Phone : <input className="h-[25px]" value={this.state.c_num} name="c_num" onChange={this.changetext} /></p>
+                      </div>
                     </div>
                   </div>
                   <div className="container">
@@ -589,19 +608,14 @@ class App extends Component {
                         <tr className="total" id="subTotal">
 
                         </tr>
-
-                        <tr className="total">
-                          <td colSpan="3"></td>
-                          <td className="pl-4 py-2 inputStyle">Total: $ {this.state.total_price}</td>
-                        </tr>
                       </tfoot>
                     </table>
-
+                    <div className="text-right pl-4 mr-[5px] py-2">Total : $ {this.state.total_price}</div>
                     <div>
                       <p className="text-gray-600 text-lg leading-10">Note:</p>
                       <div>
                         <textarea name="note"
-                          className="resize-none w-full rounded-md border-2 border-gray-400 outline-none text-lg p-5 placeholder-gray-600"
+                          className="resize-none w-full rounded-md border-2 border-gray-400 outline-none text-base p-1 placeholder-gray-600"
                           placeholder="Text Edit..."
                           id=""
                           cols="30"
