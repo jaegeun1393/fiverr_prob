@@ -1,3 +1,19 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.landing-bg {
+  background: url("./programs/imgs/banner.png");
+  background-size: cover;
+  background-position: center;
+}

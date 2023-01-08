@@ -1,0 +1,26 @@
+.man {
+    display: none;
+    width: 100%;
+}
+
+.visible:hover .man {
+    display: block;
+}
+
+.book {
+    display: none;
+    width: 100%;
+}
+
+.visibleb:hover .book {
+    display: block;
+}
+
+.icon {
+    display: none;
+    width: 100%;
+}
+
+.visiblei:hover .icon {
+    display: block;
+}

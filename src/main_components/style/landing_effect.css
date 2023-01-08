@@ -1,0 +1,25 @@
+.container {
+    scroll-snap-type: y mandatory;
+    height: calc(100vh - 75px);
+    overflow-y: scroll;
+}
+
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#footerID {
+    height: calc(100vh - 330px);
+}
+
+#extraAnimation {
+    height: calc(100vh + 1300px);
+}
+
+header {
+    display: grid;
+}
